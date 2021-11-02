@@ -1,66 +1,65 @@
 import React from 'react';
+import Api  from '../utils/Api'
+import Card from './Card'
 import '../index.css';
-function Main() {
+const api = new Api('https://nomoreparties.co/v1/cohort-28', 'd0022a9e-a6be-4d9a-ab6e-3949875c7c34');
+function Main(props) {
   //////////////////////////////////////////
-
-    
+  const {onEditAvatar, onEditProfile, onAddPlace, onCardClick}=props;
+  
+  const [userName, setUserName] = React.useState();
+  const [userDescription, setUserDescription] = React.useState();
+  const [userAvatar, setUserAvatar] = React.useState();
+  const [cards, setCards] = React.useState([]);
   ////////////////
+  console.log(api);
+  
+  
+  React.useEffect(() => {
+    api
+      .getUserInfo()
+      .then((data) => {
+        setUserName(data.name);
+        setUserDescription(data.about);
+        setUserAvatar(data.avatar);
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  React.useEffect(() => {
+    api
+      .getInitialCards()
+      .then((data) => {
+        setCards(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   ////////////////
-    /* const be = document.querySelector('#popup-profile');
-    console.log(be) */
-    /* const be = document.querySelector('.page');
-
-    console.log(React.Children.querySelector('#profE'));
-    be.querySelector('#profE').addEventListener('click',
-    be.querySelector('#popup-profile').classList.add('popup_opened')); */
-  //console.log(document.querySelector('#root').querySelector('.profile').querySelector('.profile__title-box').querySelector('.profile__edit'));
-  //console.log(document.querySelector('#root').querySelector('#popup-profile'));
-  /* document.querySelector('.profile__edit').addEventListener('click', () => {
-    document.querySelector('#popup-profile').classList.add('popup_opened');
-  });
-  document.querySelector('.profile__add').addEventListener('click', () => {
-    document.querySelector('#popup-add').classList.add('popup_opened');
-  });
-  document.querySelector('.profile__avatar').addEventListener('click', () => {
-    document.querySelector('#popup-avatar').classList.add('popup_opened');
-  }); */
 
 //////////////////////////////////////////
   return (
     <main>
         <section className="profile">
-            <div className="profile__avatar">
-              <img src="#" alt="avatar" className="profile__foto-avatar" />
+            <div className="profile__avatar"  onClick={onEditAvatar}>
+              <img src={userAvatar} alt="avatar" className="profile__foto-avatar" />
             </div>
             <div className="profile__text-group">
                 <div className="profile__title-box">
-                    <h1 className="profile__title">sdf</h1>
-                    <button type="button" className="profile__edit" id="profE"></button>
+                    <h1 className="profile__title">{userName}</h1>
+                    <button type="button" className="profile__edit" id="profE" onClick={onEditProfile}></button>
                 </div>
-                <p className="profile__subtitle">sdf</p>
+                <p className="profile__subtitle">{userDescription}</p>
             </div>
-            <button type="button" className="profile__add"></button>
+            <button type="button" className="profile__add" onClick={onAddPlace}></button>
         </section>
         <section className="places">
-
+          {cards.map((post) => (
+          <Card card={post} onCardClick={onCardClick} key={post._id} />
+        ))}
         </section>
            
     </main>
-    /* <div className="popup" id="popup-profile" >
-      <div className="popup__container" id="popup-edit-container">
-        <button type="button" className="popup__close"></button>
-        <form className="popup__form" method="POST" id="popup-form-edit" name="editingInformation">
-         <h2 className="popup__title">Редактировать профиль</h2>
-          <input name="name" id="user" type="text" placeholder="Имя" className="popup__input popup__input_type_user" minlength="2" maxlength="40" required />
-          <span id="user-error" className="error"></span>
-          <input name="about" id="user-information" type="text" placeholder="О себе" className="popup__input popup__input_type_user-information" minlength="2" maxlength="200" required />
-          <span id="user-information-error" className="error"></span>
-          <button id="btn-edit-save" type="submit" className="popup__save">Сохранить</button>
-        </form>
-      
-      </div>
-    </div>
-   */
+
   );
 }
   
