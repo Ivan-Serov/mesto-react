@@ -57,7 +57,7 @@ function App() {
         onClose={closeAllPopups}
         title="Новое место"
       >
-        <input name="name" id="title-location" type="text" placeholder="Название" className="popup__input popup__input_type_title" minlength="2" maxlength="30" required />
+        <input name="name" id="title-location" type="text" placeholder="Название" className="popup__input popup__input_type_title" /* minlength="2" maxlength="30" */ required />
         <span id="title-location-error" className="error"></span>
         <input name="link" id="link-image" type="url" placeholder="Ссылка на картинку" className="popup__input popup__input_type_image-link" required />
         <span id="link-image-error" className="error"></span>
@@ -136,7 +136,7 @@ function App() {
       </div> */}
 
 
-      <template id="places-card-template">
+      {/* <template id="places-card-template">
         <div className="places__card">
             <img src="images/karachaevsk-kar_cher.png" alt="Карачаево-Черкесия" className="places__image" />
             <h2 className="places__title">Карачаево-Черкесия</h2>
@@ -144,10 +144,10 @@ function App() {
                 <button type="button" className="places__like"></button>
                 <p className="places__like-number">2</p>
             </div>
-            {/* <!-- <button type="button" className="places__like"></button> --> */}
+            
             <button type="button" className="places__delete"></button>
         </div>
-      </template>
+      </template> */}
        {/* <!--<script type="module" src="scripts/index.js"></script> -->
       <!-- <script src="scripts/script.js"></script> -->
       <!-- <script src="scripts/Card.js"></script> -->

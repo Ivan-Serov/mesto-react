@@ -16,10 +16,10 @@ export default function Card(props) {
         className="places__image" 
         onClick={handleClick}
         />
-        <h2 className="places__title">Карачаево-Черкесия</h2>
+        <h2 className="places__title">{name} </h2>
         <div className="places__like-container">
             <button type="button" className="places__like"></button>
-            <p className="places__like-number">2</p>
+            <p className="places__like-number">{likes.length}</p>
         </div>
         {/* <!-- <button type="button" className="places__like"></button> --> */}
         <button type="button" className="places__delete"></button>
