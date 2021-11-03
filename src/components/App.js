@@ -73,6 +73,14 @@ function App() {
 
       </PopupWithForm>
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+      <PopupWithForm 
+        
+        onClose={closeAllPopups}
+        title="Вы уверены?"
+        name= "delete"
+      />
+
+      
       {/* /////////////////////////////////// */}
       {/* <div className="popup" id="popup-profile" >
         <div className="popup__container" id="popup-edit-container">
