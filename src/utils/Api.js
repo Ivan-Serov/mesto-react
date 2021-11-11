@@ -1,4 +1,4 @@
-export default class Api {
+class Api {
   constructor(url, token) {
     this._url = url;
     this._authorizationToken = token;
@@ -72,3 +72,4 @@ export default class Api {
     }
   }
 }
+export const api = new Api('https://nomoreparties.co/v1/cohort-28', 'd0022a9e-a6be-4d9a-ab6e-3949875c7c34');

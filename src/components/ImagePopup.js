@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function ImagePopup(props) {
-    const {card, onClose} = props;
+export default function ImagePopup({ isOpen, card, onClose }) {
+    
     return (
-        <div className={`popup popup_img ${card && "popup_opened"}`} id="popup-image">
+        <div className={`popup popup_img ${isOpen && "popup_opened"}`} id="popup-image">
             <div className="popup__container">
                 <button onClick={onClose} type="button" className="popup__close" id="popup-close-image"></button>
                 <img 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PopupWithForm({ name, title, children, isOpen, onClose, buttonText }) {
+export default function PopupWithForm({ name, title, children, isOpen, onClose, buttonText, onSubmit }) {
 
   const popupClass = `popup ${isOpen && "popup_opened"}`;
   const formClass = `popup__form popup__form_${name}`;
@@ -8,7 +8,7 @@ export default function PopupWithForm({ name, title, children, isOpen, onClose, 
     <div className={popupClass} >
       <div className="popup__container">
         <button type="button" className="popup__close" onClick={onClose}></button>
-        <form className={formClass} method="POST" name={name}>
+        <form className={formClass} method="POST" name={name} onSubmit={onSubmit}>
             <h2 className="popup__title">{title}</h2>
             {children}
             
