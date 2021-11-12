@@ -10,34 +10,6 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike,
   //////////////////////////////////////////
   const currentUser = React.useContext(CurrentUserContext);
   
-  /* const [userName, setUserName] = React.useState();
-  const [userDescription, setUserDescription] = React.useState();
-  const [userAvatar, setUserAvatar] = React.useState(); */
-  //const [cards, setCards] = React.useState([]);
-  ////////////////
-  /* console.log(api);
-  
-  
-  React.useEffect(() => {
-    api
-      .getUserInfo()
-      .then((data) => {
-        setUserName(data.name);
-        setUserDescription(data.about);
-        setUserAvatar(data.avatar);
-        console.log(data);
-      })
-      .catch((err) => console.log(err));
-  }, []); */
-  /* React.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((err) => console.log(err));
-  }, []); */
-  ////////////////
 
 //////////////////////////////////////////
   return (
